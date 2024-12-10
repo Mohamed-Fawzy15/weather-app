@@ -1,0 +1,170 @@
+body {
+  background-color: #1e202b;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* start of navbar style */
+.navbar-nav .nav-link.active {
+  border: 0.125rem solid #009ad8;
+  border-radius: 30px;
+  color: #009ad8;
+}
+
+.nav-link {
+  transition: all 0.5s ease-out;
+  display: inline-block;
+}
+.nav-link:hover {
+  border: 0.125rem solid #009ad8;
+  border-radius: 30px;
+  color: #009ad8;
+}
+
+/* end of navbar style */
+
+/* start of hero section */
+
+.hero {
+  background-image: url(../imgs/banner.png);
+  background-size: cover;
+  min-height: 350px;
+  padding: 70px 0;
+}
+
+.hero-form {
+  background-color: #1e202b;
+  border-radius: 30px;
+}
+
+.hero-form input {
+  background-color: #1e202b;
+  color: #706e70;
+  border-radius: 30px;
+  border: none;
+}
+
+.hero-form input::placeholder {
+  color: #706e70;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  color: #706e70;
+  border: none;
+  background-color: #1e202b;
+}
+
+.hero-form button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  padding: 0 40px;
+  border-radius: 30px;
+}
+
+.btn-city {
+  --bs-btn-color: white;
+  --bs-btn-bg: #009ad8;
+  --bs-btn-border-color: #009ad8;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #009ad8;
+  --bs-btn-hover-border-color: #009ad8;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: none;
+  --bs-btn-active-border-color: none;
+  --bs-btn-active-shadow: none;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #009ad8;
+  --bs-btn-disabled-border-color: #009ad8;
+}
+/* end of hero section */
+
+/* start with weather-data section */
+
+.weather-data {
+  position: relative;
+  top: -100px;
+}
+
+.dark-bg {
+  background-color: #262936;
+}
+
+.dark-header {
+  background-color: #222530;
+}
+
+.normal-bg {
+  background-color: #323544;
+}
+.normal-header {
+  background-color: #2d303d;
+}
+
+.weather-header p,
+.forcast-header p {
+  color: rgb(191, 193, 200);
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+}
+
+.weather-inner,
+.forcast-inner {
+  padding: 30px 20px;
+}
+
+.forcast-inner img {
+  width: 48px;
+}
+.city {
+  color: rgb(191, 193, 200);
+  line-height: 1.6875rem;
+  font-size: 1.125rem;
+}
+
+.weather-inner span {
+  font-size: 5.625rem;
+  font-weight: 700;
+  line-height: 8.5625rem;
+  color: white;
+}
+
+.forcast-inner span {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  color: white;
+}
+
+.min-temp {
+  font-weight: 300;
+  color: rgb(191, 193, 200);
+  line-height: 1.5rem;
+}
+
+.weather-statue,
+.forcast-statue {
+  color: rgb(0, 154, 216);
+  font-size: 0.8125rem;
+  line-height: 1.3125rem;
+  font-weight: 300;
+}
+.weather-info p {
+  color: rgb(191, 193, 200);
+  line-height: 1.6875rem;
+  font-size: 1.125rem;
+}
+
+.weather-info i {
+  color: rgb(191, 193, 200);
+}
+.weather-info p {
+  color: rgb(191, 193, 200);
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+  font-weight: 300;
+}
+
+/* end with weather-data section */

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style/bootstrap.min.css" />
+    <link rel="stylesheet" href="./style/all.min.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style/main.css" />
+  </head>
+  <body>
+    <main>
+      <!-- start of navbar section -->
+      <nav class="navbar p-5 navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+            <img src="./imgs/logo@2x.png" class="w-25" alt="Logo Image" />
+            <div>
+              <h1 class="h6 m-0">Weather</h1>
+              <p class="lead fs-6 m-0">tagline goes here</p>
+            </div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fa-solid fa-list text-white"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-lg-0">
+              <li class="nav-item m-2">
+                <a
+                  class="nav-link px-4 py-1 active"
+                  aria-current="page"
+                  href="#"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item m-2">
+                <a class="nav-link text-white px-4 py-1" href="#">News</a>
+              </li>
+              <li class="nav-item m-2">
+                <a class="nav-link text-white px-4 py-1" href="#"
+                  >Live Cameras</a
+                >
+              </li>
+              <li class="nav-item m-2">
+                <a class="nav-link text-white px-4 py-1" href="#">Photo</a>
+              </li>
+              <li class="nav-item m-2">
+                <a class="nav-link text-white px-4 py-1" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- end of navbar section -->
+
+      <!-- start of hero section -->
+      <header class="hero">
+        <div class="container">
+          <form
+            class="hero-form d-flex justify-content-center align-items-center position-relative"
+          >
+            <input
+              type="text"
+              placeholder="Find Your Location..."
+              class="hero-input form-control w-100 p-3"
+            />
+            <button class="btn btn-city">Find</button>
+          </form>
+        </div>
+      </header>
+      <!-- end of hero section -->
+
+      <!-- start of hero section -->
+      <section class="weather-data text-white">
+        <div class="container">
+          <div id="rowData" class="row rounded overflow-hidden gx-0">
+           
+          </div>
+        </div>
+      </section>
+      <!-- end of hero section -->
+    </main>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
