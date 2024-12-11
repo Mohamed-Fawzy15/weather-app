@@ -110,9 +110,11 @@ body {
   line-height: 1.3125rem;
 }
 
-.weather-inner,
-.forcast-inner {
+.weather-inner {
   padding: 30px 20px;
+}
+.forcast-inner {
+  padding: 50px 20px;
 }
 
 .forcast-inner img {
@@ -136,6 +138,10 @@ body {
   font-size: 1.5rem;
   line-height: 2.25rem;
   color: white;
+}
+
+.forcast-content {
+  padding: 50px 20px 100px;
 }
 
 .min-temp {

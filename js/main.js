@@ -1,17 +1,23 @@
 // variable
-const weatherData = document.querySelector("#weatherData");
 const rowData = document.querySelector("#rowData");
-const dayHolder = document.querySelector(".day");
-const dateHolder = document.querySelector(".date");
+const findInput = document.querySelector("#find");
+const findBtn = document.querySelector("#findBtn");
+
+findInput.addEventListener("input", function () {
+  getData(findInput.value);
+});
+
+findBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  getData(findInput.value);
+});
+
+window.addEventListener("load", function () {
+  getData("cairo");
+});
 
 // fetch method from the weather api of the current day
 async function getData(city) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const userLatitude = position.coords.latitude;
-      const userLongitude = position.coords.longitude;
-    });
-  }
   try {
     const res = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=729fca7793db43feb7b82241240812&q=${city}&days=3`
@@ -19,27 +25,74 @@ async function getData(city) {
     const data = await res.json();
 
     // Get current day details
-    const currentDateDetails = processDate(data.location.localtime);
+    const currentDateDetails = getDate(data.location.localtime);
 
     // Get the next day details
     const nextDayDate = new Date(data.location.localtime);
     nextDayDate.setDate(nextDayDate.getDate() + 1); // Add 1 day
-    const nextDayDetails = processDate(nextDayDate.toISOString());
+    const nextDayDetails = getDate(nextDayDate.toISOString());
+
+    // get the third day details
+    const thirdDayDate = new Date(data.location.localtime);
+    thirdDayDate.setDate(thirdDayDate.getDate() + 2); // Add 2 day
+    const thirdDayDetails = getDate(thirdDayDate.toISOString());
 
     // getUserLocation(data);
     displayTodayData(data, currentDateDetails);
-    displayNextWeather(data, nextDayDetails);
+    displayNextWeather(data, nextDayDetails, 1);
+    displayThirdDay(data, thirdDayDetails, 2);
   } catch (err) {
     console.error("Error fetching weather data:", err);
   }
 }
 
-getData("cairo");
+// a function that return the day, month and dayName
+function getDate(dateString) {
+  const date = new Date(dateString);
+
+  // Days of the week
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  // Months of the year
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  //  get the day that the user open the site
+  const dayName = days[date.getDay()];
+  // get what day number in the month
+  const day = date.getDate();
+  // get what month the user open the site
+  const month = months[date.getMonth()];
+
+  return { dayName, day, month };
+}
 
 // function to display the weather data of the current day
 function displayTodayData(data, time) {
   const weather = data.current; // Current weather details
   const location = data.location; // Location details
+
+  rowData.innerHTML = "";
 
   const box = `
          <div class="today-weather col-12 col-lg-4">
@@ -82,70 +135,55 @@ function displayTodayData(data, time) {
   rowData.innerHTML += box;
 }
 
-// a function that return the day, month and dayName
-function processDate(dateString) {
-  const date = new Date(dateString);
-
-  // Days of the week
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  // Months of the year
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  //  get the day that the user open the site
-  const dayName = days[date.getDay()];
-  // get what day number in the month
-  const day = date.getDate();
-  // get what month the user open the site
-  const month = months[date.getMonth()];
-
-  return { dayName, day, month };
-}
-
-function displayNextWeather(data, time) {
-  const nextDay = data.forecast.forecastday[1];
+// function to display the second day weather
+function displayNextWeather(data, time, index) {
+  const nextDay = data.forecast.forecastday[index];
   const maxTemp = nextDay.day.maxtemp_c;
   const minTemp = nextDay.day.mintemp_c;
   const condition = nextDay.day.condition.text;
   const icon = nextDay.day.condition.icon;
 
   let box = `
-           <div class="forcast  col-12 col-lg-4">
-              <header
-                class="forcast-header p-2 dark-header d-flex justify-content-center"
-              >
-                <p class="day m-0">${time.dayName}</p>
-              </header>
-              <div class="forcast-content dark-bg">
-                <div class="forcast-inner d-flex flex-column text-center align-items-center">
-                  <img src="${icon}" " alt="" />
-                  <span>${maxTemp}<sup>o</sup>c</span>
-                  <p class="min-temp">${minTemp}<sup>o</sup></p>
-                  <p class="weather-statue">${condition}</p>
-                </div>
-              </div>
+        <div class="forcast col-12 col-lg-4">
+          <header class="forcast-header p-2 dark-header d-flex justify-content-center">
+            <p class="day m-0">${time.dayName}</p>
+          </header>
+          <div class="forcast-content dark-bg">
+            <div class="forcast-inner d-flex flex-column text-center align-items-center">
+              <img src="${icon}" " alt="" />
+              <span>${maxTemp}<sup>o</sup>c</span>
+              <p class="min-temp">${minTemp}<sup>o</sup></p>
+              <p class="weather-statue">${condition}</p>
             </div>
+          </div>
+        </div>
+  `;
+
+  rowData.innerHTML += box;
+}
+
+// function to display the third day weather
+function displayThirdDay(data, time, index) {
+  const nextDay = data.forecast.forecastday[index];
+  const maxTemp = nextDay.day.maxtemp_c;
+  const minTemp = nextDay.day.mintemp_c;
+  const condition = nextDay.day.condition.text;
+  const icon = nextDay.day.condition.icon;
+
+  let box = `
+        <div class="forcast col-12 col-lg-4">
+          <header class="forcast-header p-2 normal-header d-flex justify-content-center">
+            <p class="day m-0">${time.dayName}</p>
+          </header>
+          <div class="forcast-content normal-bg">
+            <div class="forcast-inner d-flex flex-column text-center align-items-center">
+              <img src="${icon}" " alt="" />
+              <span>${maxTemp}<sup>o</sup>c</span>
+              <p class="min-temp">${minTemp}<sup>o</sup></p>
+              <p class="weather-statue">${condition}</p>
+            </div>
+          </div>
+        </div>
   `;
 
   rowData.innerHTML += box;
