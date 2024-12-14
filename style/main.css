@@ -1,6 +1,6 @@
 body {
   background-color: #1e202b;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", "Open Sans", sans-serif;
 }
 
 /* start of navbar style */
@@ -20,6 +20,12 @@ body {
   color: #009ad8;
 }
 
+.site-decu {
+  font-size: 0.625rem;
+  font-weight: 300;
+  line-height: 0.9375rem;
+  color: rgb(191, 193, 200);
+}
 /* end of navbar style */
 
 /* start of hero section */
@@ -81,7 +87,7 @@ body {
 }
 /* end of hero section */
 
-/* start with weather-data section */
+/* start of weather-data section */
 
 .weather-data {
   position: relative;
@@ -173,4 +179,38 @@ body {
   font-weight: 300;
 }
 
-/* end with weather-data section */
+/* end of weather-data section */
+
+/* start of footer section */
+
+.footer {
+  padding: 50px 0px;
+  background-color: #272936;
+}
+
+.footer-links li a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 50%;
+  background-color: #1e202b;
+  color: #009ad8;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.footer-links li a:hover {
+  background: #009ad8;
+  color: white;
+}
+
+footer p {
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.3125rem;
+  color: rgb(191, 193, 200);
+  padding: 20px 10px;
+}
+/* end of footer section */

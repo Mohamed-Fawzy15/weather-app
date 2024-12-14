@@ -129,8 +129,6 @@ function displayTodayData(data, time) {
                 </div>
               </div>
             </div>
-
-    
   `;
   rowData.innerHTML += box;
 }
